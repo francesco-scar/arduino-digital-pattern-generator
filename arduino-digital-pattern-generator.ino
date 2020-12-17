@@ -32,7 +32,7 @@ void loop() {
 
 
 void clockGenerator(){
-  Serial.print("How many clock cycles? [0 for infinite]:  ");
+  Serial.print("How many clock cycles? [-1 for infinite]:  ");
   long cycles = inputNumber();
   Serial.print("Frequency [Hz]:  ");
   float freq = inputNumber();

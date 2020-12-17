@@ -3,7 +3,9 @@ void digitalPatternGenerator();
 
 void setup() {
   Serial.begin(9600);
+}
 
+void loop() {
   Serial.print("----------------------------\n0 - Generate clock pulses\n1 - Generate specific digital pattern\n\nEnter 0 or 1:  ");
 
   char c;
@@ -25,13 +27,9 @@ void setup() {
   } while (c != '0' && c != '1');
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-
-}
-
 
 void clockGenerator(){
+  clockFunctionBegin:
   Serial.print("How many clock cycles? [-1 for infinite]:  ");
   long cycles = inputNumber();
   Serial.print("Frequency [Hz]:  ");
@@ -65,7 +63,15 @@ void clockGenerator(){
     }
   }
 
-  Serial.println("Done!");
+  delay(50);
+
+  serialFlush();
+  
+  Serial.println("Done!\n\nEnter 1 to select clock option again other to return to main menu");
+  while (!Serial.available());
+  if (Serial.read() == '1'){
+    goto clockFunctionBegin;
+  }
 }
 
 float inputNumber(){

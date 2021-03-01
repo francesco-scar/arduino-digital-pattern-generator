@@ -18,6 +18,7 @@ void loop() {
         clockGenerator();
       } else if (c == '1') {
         Serial.println("1\nEntering digital pattern mode...");
+        Serial.println("FUNCTION NOT AVAILABLE, I WILL ADD THAT SOON (I HOPE)")
 //        digitalPatternGenerator();
       } else if (c != '\r' && c != '\n') {
         Serial.println(c);
